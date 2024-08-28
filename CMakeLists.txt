@@ -260,3 +260,154 @@ install(DIRECTORY
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${NAME}
     FILES_MATCHING PATTERN "*.*"
 )
+
+# cli export
+set(NAME dat_export)
+
+set(GW2BROWSER_SOURCE_FILES
+        ${GW2BROWSER_SOURCE_DIR}/BrowserWindow.cpp
+        ${GW2BROWSER_SOURCE_DIR}/CategoryTree.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Data.cpp
+        ${GW2BROWSER_SOURCE_DIR}/DatFile.cpp
+        ${GW2BROWSER_SOURCE_DIR}/DatIndex.cpp
+        ${GW2BROWSER_SOURCE_DIR}/DatIndexIO.cpp
+        ${GW2BROWSER_SOURCE_DIR}/EventId.h
+        ${GW2BROWSER_SOURCE_DIR}/Exception.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Exporter.cpp
+        ${GW2BROWSER_SOURCE_DIR}/FileReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/PackFile.cpp
+        ${GW2BROWSER_SOURCE_DIR}/PreviewGLCanvas.cpp
+        ${GW2BROWSER_SOURCE_DIR}/PreviewPanel.cpp
+        ${GW2BROWSER_SOURCE_DIR}/ProgressStatusBar.cpp
+        ${GW2BROWSER_SOURCE_DIR}/stdafx.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Task.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Imported/crc.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Imported/half.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/AFNTReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/asndMP3Reader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ContentReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/EulaReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ImageReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/MapReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ModelReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/PackedSoundReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/SoundBankReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/StringReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Readers/TextReader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/ReadIndexTask.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/ScanDatTask.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/WriteIndexTask.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Util/Misc.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/BinaryViewer/BinaryViewer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/BinaryViewer/HexControl.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ImageViewer/ImageControl.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ImageViewer/ImageViewer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Camera.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/FrameBuffer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/IndexBuffer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Light.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/LightBox.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Model.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Renderer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Shader.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/ShaderManager.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Text2D.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Texture2D.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/TextureManager.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/VertexBuffer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/OggCallback.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/SoundDecoder.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/SoundPlayer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/StringViewer/StringViewer.cpp
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/TextViewer/TextViewer.cpp
+)
+
+set(GW2BROWSER_HEADER_FILES
+        ${GW2BROWSER_SOURCE_DIR}/ANetStructs.h
+        ${GW2BROWSER_SOURCE_DIR}/BrowserWindow.h
+        ${GW2BROWSER_SOURCE_DIR}/CategoryTree.h
+        ${GW2BROWSER_SOURCE_DIR}/Data.h
+        ${GW2BROWSER_SOURCE_DIR}/DatFile.h
+        ${GW2BROWSER_SOURCE_DIR}/DatIndex.h
+        ${GW2BROWSER_SOURCE_DIR}/DatIndexIO.h
+        ${GW2BROWSER_SOURCE_DIR}/Exception.h
+        ${GW2BROWSER_SOURCE_DIR}/Exporter.h
+        ${GW2BROWSER_SOURCE_DIR}/FileReader.h
+        ${GW2BROWSER_SOURCE_DIR}/PackFile.h
+        ${GW2BROWSER_SOURCE_DIR}/PreviewGLCanvas.h
+        ${GW2BROWSER_SOURCE_DIR}/PreviewPanel.h
+        ${GW2BROWSER_SOURCE_DIR}/ProgressStatusBar.h
+        ${GW2BROWSER_SOURCE_DIR}/stdafx.h
+        ${GW2BROWSER_SOURCE_DIR}/Task.h
+        ${GW2BROWSER_SOURCE_DIR}/version.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewer.h
+        ${GW2BROWSER_SOURCE_DIR}/wx_pch.h
+        ${GW2BROWSER_SOURCE_DIR}/Imported/crc.h
+        ${GW2BROWSER_SOURCE_DIR}/Imported/half.h
+        ${GW2BROWSER_SOURCE_DIR}/Imported/half.inl
+        ${GW2BROWSER_SOURCE_DIR}/Readers/AFNTReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/asndMP3Reader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ContentReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/EulaReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ImageReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/MapReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/ModelReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/PackedSoundReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/SoundBankReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/StringReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Readers/TextReader.h
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/ReadIndexTask.h
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/ScanDatTask.h
+        ${GW2BROWSER_SOURCE_DIR}/Tasks/WriteIndexTask.h
+        ${GW2BROWSER_SOURCE_DIR}/Util/Array.h
+        ${GW2BROWSER_SOURCE_DIR}/Util/Ensure.h
+        ${GW2BROWSER_SOURCE_DIR}/Util/Misc.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/BinaryViewer/BinaryViewer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/BinaryViewer/HexControl.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ImageViewer/ImageControl.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ImageViewer/ImageViewer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Camera.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/FrameBuffer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/IndexBuffer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Light.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/LightBox.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Model.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Renderer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Shader.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/ShaderManager.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Text2D.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/Texture2D.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/TextureManager.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/ModelViewer/VertexBuffer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/OggCallback.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/SoundDecoder.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/SoundPlayer/SoundPlayer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/StringViewer/StringViewer.h
+        ${GW2BROWSER_SOURCE_DIR}/Viewers/TextViewer/TextViewer.h
+)
+
+add_executable(dat_export ${GW2BROWSER_SOURCE_DIR}/dat_export.cpp ${GW2BROWSER_SOURCE_FILES} ${GW2BROWSER_HEADER_FILES})
+
+target_include_directories(${NAME} PRIVATE ${GW2BROWSER_INCLUDE_DIRECTORY})
+
+find_package(wxWidgets COMPONENTS adv aui gl core base)
+if (wxWidgets_FOUND)
+    include(${wxWidgets_USE_FILE})
+    target_link_libraries(${NAME} ${wxWidgets_LIBRARIES})
+    target_compile_definitions(${NAME} PRIVATE WX_PRECOMP)
+endif()
+
+target_link_libraries(${NAME} ${LIBS}
+        GLEW
+        openal
+        ogg
+        vorbis
+        vorbisfile
+        mpg123
+        webp
+        tinyxml2
+        freetype
+        gw2dattools
+        gw2formats
+)
