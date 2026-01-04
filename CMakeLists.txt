@@ -1,6 +1,8 @@
 project(gw2browser)
 
 cmake_minimum_required(VERSION 3.0)
+#set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" ".lib")
+set(BUILD_SHARED_LIBS OFF)
 
 set(NAME gw2browser)
 
@@ -193,7 +195,7 @@ find_package_handle_standard_args(VORBISFILE DEFAULT_MSG VORBISFILE_INCLUDE_DIRS
 find_package_handle_standard_args(MPG123 DEFAULT_MSG MPG123_INCLUDE_DIRS MPG123_LIBRARIES)
 find_package_handle_standard_args(LIBWEBP DEFAULT_MSG LIBWEBP_INCLUDE_DIRS LIBWEBP_LIBRARIES)
 
-find_library(TINYXML_LIBRARY NAMES tinyxml2)
+find_package(TINYXML_LIBRARY NAMES tinyxml2 COMPONENTS static)
 if (TINYXML_FOUND)
     include_directories(${TINYXML_INCLUDE_DIRS})
     link_libraries(${TINYXML_LIBRARIES})
@@ -386,6 +388,11 @@ set(GW2BROWSER_HEADER_FILES
         ${GW2BROWSER_SOURCE_DIR}/Viewers/StringViewer/StringViewer.h
         ${GW2BROWSER_SOURCE_DIR}/Viewers/TextViewer/TextViewer.h
 )
+
+cmake_policy(SET CMP0069 NEW)
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+set(LINK_SEARCH_START_STATIC TRUE)
+# set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 add_executable(dat_export ${GW2BROWSER_SOURCE_DIR}/dat_export.cpp ${GW2BROWSER_SOURCE_FILES} ${GW2BROWSER_HEADER_FILES})
 

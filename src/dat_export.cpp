@@ -249,17 +249,15 @@ int main(int argc, char **argv) {
                 std::exit(1);
             }
 
-            for (i = 0; i < max; i++) {
-                uint idx;
+            for (i = 0; i < max;) {
+                const DatIndexEntry* entry;
                 {
                     std::lock_guard<std::mutex> lock(mutex_index);
                     if (i >= max) {
                         break;
                     }
-                    idx = i++;
+                    entry = entries[i++];
                 }
-
-                auto entry = entries[idx];
 
                 auto entry_file_name = wxFileName();
                 auto file_type = entry->fileType();
